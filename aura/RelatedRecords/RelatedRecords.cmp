@@ -1,0 +1,77 @@
+<aura:component access="GLOBAL" 
+				controller="LightningController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName">
+    <!--ATTRIBUTES-->
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="sObjectName" type="String" />
+    <aura:attribute name="sourceRecord" type="Object" />
+    <aura:attribute name="fieldSet" type="String" />
+    <aura:attribute name="sourceField" type="String" />
+    <aura:attribute name="targetField" type="String" />
+    <aura:attribute name="targetObject" type="String" />
+    <aura:attribute name="relatedRecords" type="Object[]" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="messages" type="Object[]" />
+    <aura:attribute name="sortedBy" type="String" />
+    <aura:attribute name="sortedDirection" type="String" />
+
+    <force:recordData aura:id="sourceRecordData"
+			        recordId="{!v.recordId}"
+			        layoutType="FULL"
+			        mode="VIEW"
+			        targetRecord="{!v.sourceRecord}"
+			        recordUpdated="{!c.handleRecordUpdated}"
+			        fields="{!sourceField}"
+    />
+
+    <!--HANDLERS-->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="aura:waiting" action="{!c.waiting}"/> 
+    <aura:handler event="aura:doneWaiting" action="{!c.doneWaiting}"/>
+
+    <!--HTML-->
+    <div class="slds-size_1-of-1">
+        <div id="messages">
+        	<aura:if isTrue="{!not(empty(v.messages))}">
+    	    	<aura:iteration items="{!v.messages}" var="msg">
+    	    		 <ui:message title="{!msg.title}" severity="{!msg.severity}" closable="{!msg.closable}">
+    	    		 	{!msg.message}
+    	    		 </ui:message>
+    	    	</aura:iteration>
+    	    </aura:if>
+        </div>
+        <div id="cmpBody">
+        	<aura:if isTrue="{!not(empty(v.relatedRecords))}">
+                <div class="slds-size_1-of-1">
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead >
+                        <tr class="slds-text-title_caps">
+                        <aura:iteration items="{!v.columns}" var="col">
+                            <th scope="col"><div class="slds-truncate" title="{!col.label}">{!col.label}</div></th>
+                        </aura:iteration>
+                    </tr>
+                    </thead>
+                    <aura:iteration items="{!v.relatedRecords}" var="rec">
+                        <tr>
+                            <aura:iteration items="{!v.columns}" var="col">
+                                <td data-label="{!col.label}">
+                                    <c:outputField type="{!col.type}" record="{!rec}" label="{!col.label}" field="{!col.fieldName}" class="slds-truncate"/>
+                                </td> 
+                            </aura:iteration>
+                        </tr>      
+                    </aura:iteration>
+                </table>
+    	        <aura:set attribute="else">
+    		        <div>No records to display.</div>
+    		    </aura:set>
+                </div>
+    	    </aura:if>
+
+
+        </div>
+
+        <div id="spinner" style="display:none;">
+            <lightning:spinner />
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,8 @@
+<design:component label="Related Records">
+    <design:attribute name="sourceField" label="API name for field on current object" />
+	<design:attribute name="targetObject" label="Related Object API Name" />
+    <design:attribute name="targetField" label="API name for field on related object" />
+    <design:attribute name="fieldSet" label="API name for field set" />
+    <design:attribute name="sortedBy" label="API name for field to sort by initially" default="Id"/>
+    <design:attribute name="sortedDirection" label="asc or desc" default="desc"/>
+</design:component>
