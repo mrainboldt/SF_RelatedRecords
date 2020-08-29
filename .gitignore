@@ -29,7 +29,6 @@ $RECYCLE.BIN/
 .prettierrc
 .prettierignore
 .forceignore
-README.md
 .vscode/settings.json
 .vscode/launch.json
 .vscode/extensions.json
