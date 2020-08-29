@@ -1,0 +1,88 @@
+<template>
+    <!-- <div style="width:100%;" class="slds-card_boundary related_list_card_border_top"> -->
+    <article class="slds-card slds-card_boundary">
+        <div class="slds-grid slds-page-header">
+            <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                <lightning-icon icon-name={icon} size="small"></lightning-icon>
+                <div class="slds-media__body slds-p-left_small">
+                <span slot="title" class="slds-card__header-title slds-card__header-link">
+                    {label} ({rowCount})
+                </span>
+            </div>
+            </header>
+            <div class="slds-no-flex">
+                <template if:true={canCreateNew}>
+                    <lightning-button label={labels.lblNew} 
+                                    title={labels.lblNew}
+                                    onclick={handleNew} 
+                                    slot="actions">
+                    </lightning-button>
+                    <!-- <lightning-button-icon icon-name="utility:refresh"
+                                    variant="border-filled"
+                                    tooltip="Refresh Records"
+                                    alternative-text="Refresh Records"
+                                    onclick={getRefreshRecords}
+                                    slot="actions">
+                    </lightning-button-icon> -->
+                </template>
+            </div>
+        </div>
+            <template if:true={records}>
+                    <lightning-datatable
+                        key-field="id"
+                        data={records}
+                        columns={columns}
+                        is-loading={isLoading}
+                        onsort={updateColumnSorting}
+                        sorted-by={sortedBy}
+                        sorted-direction={sortDirection}
+                        hide-checkbox-column
+                        onrowaction={handleRowAction}
+                        >
+                    </lightning-datatable>
+                <template if:true={hasMore}>
+                    <div class="slds-card__footer" data-aura-rendered-by="1798:0">
+                        <span class="view-all-label" >
+                            <a onclick={loadAllData}>{labels.lblViewAll}</a>
+                        </span>
+                    </div>
+                </template>
+            </template>
+</article>
+    <!-- MODAL START -->
+    <template if:true={showNew}>
+        <div class="modal-body">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title={labels.lblClose} onclick={handleCloseNew}>
+                            <lightning-icon icon-name="utility:close" class="close-icon" size="medium" variant="inverse"></lightning-icon>
+                            <span class="slds-assistive-text">{labels.lblClose}</span>
+                        </button>
+                        <h2 class="slds-text-heading_medium slds-hyphenate">{labels.lblNew} {relatedObjectLabel}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <div class="slds-align_absolute-center">
+                            <lightning-radio-group name="radioGroup"
+                                                    label={labels.lblSelectRecordType}
+                                                    title={labels.lblSelectRecordType}
+                                                    options={recordTypes}
+                                                    value={selectedRecordType}
+                                                    type="radio"
+                                                    onchange={setRecordType}
+                                                    required>
+                            </lightning-radio-group>
+                        </div>
+                    </div>
+                    
+                    <footer class="slds-modal__footer">
+                            <lightning-button label={labels.lblCancel} variant="neutral" title={labels.lblCancel} onclick={handleCloseNew}></lightning-button>
+                            <lightning-button label={labels.lblNext} variant="brand" title={labels.lblNext} onclick={showCreate} class="slds-m-left_x-small"></lightning-button>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+    </template>
+    <!-- MODAL END -->
+</template>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>View_All</fullName>
+        <categories>utility</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>View All</shortDescription>
+        <value>View All</value>
+    </labels>
+    <labels>
+        <fullName>Cancel</fullName>
+        <categories>utility</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Cancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>Close</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Close</shortDescription>
+        <value>Close</value>
+    </labels>
+    <labels>
+        <fullName>New</fullName>
+        <categories>utility</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>New</shortDescription>
+        <value>New</value>
+    </labels>
+    <labels>
+        <fullName>Next</fullName>
+        <categories>utility</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Next</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>Select_a_record_type</fullName>
+        <categories>utility</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Select a record type</shortDescription>
+        <value>Select a record type</value>
+    </labels>
+    <labels>
+        <fullName>RelatedRecords_Table_No_Records_Message</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>RelatedRecords Table No Records Message</shortDescription>
+        <value>No Related Records</value>
+    </labels>
+</CustomLabels>
