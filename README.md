@@ -12,13 +12,13 @@ Display a filterable list of related records.  Developed to mimic the lighting e
  - Sorting field and order
 
 #### Take a Look
-[Related Records Component](/images/relatedRecords.png)
+![Related Records Component](/images/relatedRecords.png)
 
 
 ## Admin configuration settings
 
-[Config Settings Part 1](/images/ConfigSettingsPart1.png)
-[Config Settings Part 2](/images/ConfigSettingsPart2.png)
+![Config Settings Part 1](/images/ConfigSettingsPart1.png)
+![Config Settings Part 2](/images/ConfigSettingsPart2.png)
 
 ## Known limitations
  - Displaying the name instead of the salesforce id for lookup fields
